@@ -1,5 +1,6 @@
 import { BrandingElement, EmailElement, PaymentElement, Payments, usePayments, useWhop } from "@whop/elements-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { WhopElementsSafe } from "../components/WhopElementsSafe";
 import { getPlan, WHOP_ACCOUNT_ID } from "../lib/plans";
 
@@ -96,6 +97,9 @@ export function DepositPage() {
 		<>
 			<div className="page-head">
 				<div className="container">
+					<p style={{ margin: "0 0 10px" }}>
+						<Link to="/pricing">← Back to pricing</Link>
+					</p>
 					<h1>Project Deposit — $500</h1>
 					<p>
 						Reserve your build date. We save your card now and bill the rest when the job is done —

@@ -34,6 +34,9 @@ export function CheckoutPage() {
 		<>
 			<div className="page-head">
 				<div className="container">
+					<p style={{ margin: "0 0 10px" }}>
+						<Link to="/pricing">← Back to pricing</Link>
+					</p>
 					<h1>Checkout — {plan.name}</h1>
 					<p>
 						{plan.priceLabel} · {plan.billing}. Secure checkout by Whop — your card details never

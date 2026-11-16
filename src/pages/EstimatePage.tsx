@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { EstimateForm } from "../components/EstimateForm";
 
 export function EstimatePage() {
@@ -5,6 +6,9 @@ export function EstimatePage() {
 		<>
 			<div className="page-head">
 				<div className="container">
+					<p style={{ margin: "0 0 10px" }}>
+						<Link to="/">← Back to homepage</Link>
+					</p>
 					<h1>Request an Estimate</h1>
 					<p>
 						Tell us about your roof and we&rsquo;ll get back to you within one business day — with an
