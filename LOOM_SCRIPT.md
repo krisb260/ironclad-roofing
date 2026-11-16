@@ -1,5 +1,5 @@
 # Loom walkthrough script — Ironclad Roofing Co. (Whop Workforce task)
-Target: ~65 seconds, one take, screen + voice. Record at normal speaking pace; small stumbles are fine, don't restart.
+Target: ~78 seconds, one take, screen + voice. Record at normal speaking pace; small stumbles are fine, don't restart. (The AI voiceover of this script runs 78s — the timings below are guides, not exact.)
 
 ## 0:00–0:08 — Intro (homepage on screen)
 "Hey, this is Ironclad Roofing Co. — a complete website template for a roofing company in Austin, Texas, built with Whop Websites. It's live right now, and everything on it works with real Whop plans and payments."
