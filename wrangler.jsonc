@@ -1,0 +1,15 @@
+{
+	// Whop hosting runs this site on Cloudflare Workers. The worker entry
+	// is src/worker.ts (built by the ssr environment to dist/server/index.js);
+	// dist/client is served as static assets by the platform.
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "ironclad-roofing",
+	"compatibility_date": "2026-11-16",
+	"compatibility_flags": ["nodejs_compat"],
+	"main": "src/worker.ts",
+	"assets": {
+		"directory": "./dist/client",
+		"binding": "ASSETS",
+		"not_found_handling": "single-page-application"
+	}
+}

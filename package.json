@@ -1,0 +1,36 @@
+{
+  "dependencies": {
+    "@whop/elements": "^1.10.0",
+    "@whop/elements-react": "^1.10.0",
+    "@whop/sdk": "^2.8.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.0"
+  },
+  "description": "Ironclad Roofing Co. — production-ready roofing company website template built with Whop Websites. Original template for the Whop Workforce roofing bounty.",
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.69.1",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.4.1",
+    "@whop/cli": "^1.0.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "wrangler": "^4.163.0"
+  },
+  "name": "ironclad-roofing",
+  "private": true,
+  "scripts": {
+    "build": "vite build",
+    "deploy": "whop apps deploy",
+    "deploy:preview": "whop apps deploy --preview",
+    "dev": "vite --port 5173",
+    "dev:server": "tsx watch src/worker.ts",
+    "preview": "node dist/server/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "type": "module",
+  "version": "1.0.0"
+}

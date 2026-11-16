@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.wrangler/
+shots/
+shots-live/
+approve-login*.html
+shoot.sh
+.env
+*.local
