@@ -7,3 +7,4 @@ approve-login*.html
 shoot.sh
 .env
 *.local
+loom/
