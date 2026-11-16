@@ -801,8 +801,15 @@ p {
 		grid-template-columns: 1fr 1fr;
 	}
 
+	/* The nav stays visible on phones as its own row — hiding it left
+	   mobile visitors with no way to reach Pricing or Free Estimate. */
 	.site-nav {
-		display: none;
+		display: flex;
+		flex-basis: 100%;
+		flex-wrap: wrap;
+		gap: 6px 18px;
+		order: 3;
+		padding-bottom: 8px;
 	}
 
 	.site-footer .container {
