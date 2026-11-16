@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { isCheckoutLive, PLANS } from "../lib/plans";
+import { PLANS } from "../lib/plans";
 import { PlanCard } from "../components/PlanCard";
 
 export function PricingPage() {
@@ -16,12 +16,6 @@ export function PricingPage() {
 			</div>
 			<section className="section">
 				<div className="container">
-					{!isCheckoutLive() ? (
-						<p className="notice warn">
-							Demo mode: checkout activates once the real Whop plans are connected. The buttons below
-							open the real checkout pages, which will work end-to-end after setup.
-						</p>
-					) : null}
 					<div className="grid-3">
 						{PLANS.map((p) => (
 							<PlanCard key={p.slug} plan={p} featured={p.slug === "tuneup"} />

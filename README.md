@@ -5,7 +5,9 @@ Whop Workforce bounty *"Build a production-ready website template for a US roofi
 using Whop Websites"* (Bens Whop).
 
 **Brand (original):** Ironclad Roofing Co., Austin, TX. All copy is original. No content,
-names, prices, or images were copied from any demo store. Visuals are original CSS/SVG art.
+names, prices, or images were copied from any demo store. Visuals are original CSS/SVG art,
+except the hero photo: U.S. Navy photo (public domain), via Wikimedia Commons
+(`public/hero-roof.jpg` — crew tearing off old shingles, Norfolk, VA, 2007).
 
 ## What it does
 
@@ -26,7 +28,8 @@ names, prices, or images were copied from any demo store. Visuals are original C
   `mode: "setup"`: card saved without charging → confirmation token → server creates the
   setup intent → final balance billed later through the Invoices API.
 - **Estimate** (`/estimate`) — "Request an Estimate" form → `POST /api/estimate` → Whop
-  Leads API (Legacy v2) so quote requests land as leads.
+  Leads API (Legacy v2) first; on its blanket 401 for Company API keys, falls back to a
+  standard `lead` conversion event on the Current API (see `src/lib/whop-server.ts`).
 - **Success** (`/checkout/success`) — reads `?payment=` + `?status=` for display only.
   Fulfilment happens server-side, from the `payment.succeeded` webhook — never from the
   browser callback.

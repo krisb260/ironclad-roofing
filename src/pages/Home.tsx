@@ -1,8 +1,35 @@
 import { Link } from "react-router-dom";
-import { isCheckoutLive, PLANS } from "../lib/plans";
+import { PLANS } from "../lib/plans";
 import { EstimateForm } from "../components/EstimateForm";
 import { PlanCard } from "../components/PlanCard";
-import { AreaMapArt, RoofArt } from "../components/RoofArt";
+import { AreaMapArt } from "../components/RoofArt";
+
+/** Hand-coded inline SVG icons — no emoji in the UI. */
+function WrenchIcon() {
+	return (
+		<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+			<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+		</svg>
+	);
+}
+
+function HouseIcon() {
+	return (
+		<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+			<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+			<polyline points="9 22 9 12 15 12 15 22" />
+		</svg>
+	);
+}
+
+function MagnifierIcon() {
+	return (
+		<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+			<circle cx="11" cy="11" r="8" />
+			<path d="m21 21-4.3-4.3" />
+		</svg>
+	);
+}
 
 const TOWNS = [
 	"Austin",
@@ -21,17 +48,17 @@ const TOWNS = [
 
 const SERVICES = [
 	{
-		emoji: "🔧",
+		icon: <WrenchIcon />,
 		name: "Roof Repair",
 		text: "Leaks, missing shingles, cracked flashing, storm damage — fixed right the first time, with photos of what we found and what we did.",
 	},
 	{
-		emoji: "🏠",
+		icon: <HouseIcon />,
 		name: "Roof Replacement",
 		text: "A full new roof, done in days, not weeks. Architectural shingles rated for Texas hail, installed by our own crew — never day labor.",
 	},
 	{
-		emoji: "🔍",
+		icon: <MagnifierIcon />,
 		name: "Roof Inspection",
 		text: "A 21-point inspection with a written report in 24 hours. Buying a house, filing an insurance claim, or just want the truth about your roof.",
 	},
@@ -81,7 +108,13 @@ export function HomePage() {
 							No pushy sales visits. No surprise charges. Just a straight answer about your roof.
 						</p>
 					</div>
-					<RoofArt />
+					<figure className="hero-photo">
+						<img
+							src="/hero-roof.jpg"
+							alt="Roofing crew tearing off old shingles on a house roof"
+						/>
+						<figcaption>Built for Texas weather — hail, heat, and everything in between.</figcaption>
+					</figure>
 				</div>
 			</section>
 
@@ -114,7 +147,7 @@ export function HomePage() {
 						{SERVICES.map((s) => (
 							<div className="card" key={s.name}>
 								<div className="icon" aria-hidden="true">
-									{s.emoji}
+									{s.icon}
 								</div>
 								<h3>{s.name}</h3>
 								<p>{s.text}</p>
@@ -189,12 +222,6 @@ export function HomePage() {
 						No hourly meters running, no &ldquo;we&rsquo;ll see when we get up there.&rdquo; Pick a service,
 						pay securely online, and we show up on schedule.
 					</p>
-					{!isCheckoutLive() ? (
-						<p className="notice warn" style={{ marginTop: 24 }}>
-							Demo mode: checkout activates once the real Whop plans are connected. Prices below are
-							the live template prices.
-						</p>
-					) : null}
 					<div className="grid-3" style={{ marginTop: 24 }}>
 						{PLANS.map((p) => (
 							<PlanCard key={p.slug} plan={p} featured={p.slug === "tuneup"} />

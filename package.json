@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@fontsource/barlow-condensed": "^5.3.0",
     "@whop/elements": "^1.10.0",
     "@whop/elements-react": "^1.10.0",
     "@whop/sdk": "^2.8.1",

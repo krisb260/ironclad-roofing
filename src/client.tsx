@@ -8,6 +8,8 @@ import { EstimatePage } from "./pages/EstimatePage";
 import { HomePage } from "./pages/Home";
 import { PricingPage } from "./pages/Pricing";
 import { SuccessPage } from "./pages/SuccessPage";
+import "@fontsource/barlow-condensed/700.css";
+import "@fontsource/barlow-condensed/800.css";
 import "./styles.css";
 
 function NotFound() {
