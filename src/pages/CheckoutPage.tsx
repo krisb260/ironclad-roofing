@@ -2,7 +2,7 @@ import { Checkout, CheckoutElement } from "@whop/elements-react";
 import { useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { WhopElementsSafe } from "../components/WhopElementsSafe";
-import { getPlan, isRealPlanId } from "../lib/plans";
+import { getPlan } from "../lib/plans";
 
 /**
  * Checkout for one plan, driven by Whop's hosted Checkout handle.
@@ -28,7 +28,6 @@ export function CheckoutPage() {
 		return <Navigate to="/pricing" replace />;
 	}
 
-	const live = isRealPlanId(plan.whopPlanId);
 	const returnUrl = `${window.location.origin}/checkout/success`;
 
 	return (
@@ -76,45 +75,25 @@ export function CheckoutPage() {
 					</div>
 
 					<div className="checkout-box">
-						{!live ? (
-							<div>
-								<h3>Pay securely</h3>
-								<p className="sub">One-press wallets, or any major card.</p>
-								<p className="notice warn">
-									<strong>Demo mode.</strong> This checkout is wired to the real Whop Checkout
-									elements, but the plan id is still a placeholder. Once the real{" "}
-									<code>{plan.slug}</code> plan is created in Whop, this page charges for real — no
-									code changes needed, just the plan id in <code>src/lib/plans.ts</code>.
-								</p>
-								<p>
-									Want a price for your roof first?{" "}
-									<Link to="/estimate">Request a free estimate</Link> and we&rsquo;ll reply
-									within one business day.
-								</p>
-							</div>
-						) : (
-							<>
-								<h3>Pay securely</h3>
-								<p className="sub">One-press wallets, or any major card.</p>
-								<WhopElementsSafe>
-									<Checkout
-										plan={plan.whopPlanId}
-										returnUrl={returnUrl}
-										onComplete={(payload) => {
-											if (payload && "paymentId" in payload) {
-												setCompleted(payload.paymentId);
-											}
-										}}
-									>
-										<div className="elements-frame">
-											<CheckoutElement
-												fallback={<div className="loading">Loading secure checkout…</div>}
-											/>
-										</div>
-									</Checkout>
-								</WhopElementsSafe>
-							</>
-						)}
+						<h3>Pay securely</h3>
+						<p className="sub">One-press wallets, or any major card.</p>
+						<WhopElementsSafe>
+							<Checkout
+								plan={plan.whopPlanId}
+								returnUrl={returnUrl}
+								onComplete={(payload) => {
+									if (payload && "paymentId" in payload) {
+										setCompleted(payload.paymentId);
+									}
+								}}
+							>
+								<div className="elements-frame">
+									<CheckoutElement
+										fallback={<div className="loading">Loading secure checkout…</div>}
+									/>
+								</div>
+							</Checkout>
+						</WhopElementsSafe>
 					</div>
 				</div>
 			</section>

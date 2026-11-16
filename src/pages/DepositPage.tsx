@@ -1,6 +1,5 @@
 import { BrandingElement, EmailElement, PaymentElement, Payments, usePayments, useWhop } from "@whop/elements-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { WhopElementsSafe } from "../components/WhopElementsSafe";
 import { getPlan, WHOP_ACCOUNT_ID } from "../lib/plans";
 
@@ -92,7 +91,6 @@ function SaveCardButton() {
 
 export function DepositPage() {
 	const plan = getPlan("deposit");
-	const configured = WHOP_ACCOUNT_ID.startsWith("biz_") && !WHOP_ACCOUNT_ID.endsWith("_placeholder");
 
 	return (
 		<>
@@ -140,44 +138,28 @@ export function DepositPage() {
 						<p className="sub">
 							$500 deposit · card saved securely · $0 charged today · final balance billed later.
 						</p>
-						{!configured ? (
-							<div>
-								<p className="notice warn">
-									<strong>Demo mode.</strong> The card-save form below is wired to the real Whop
-									payment elements, but the business account isn&rsquo;t connected yet. Once the
-									Company API key is set, saving a card and billing the final invoice work
-									end-to-end — no code changes needed.
-								</p>
-								<p>
-									Want a price for your roof first?{" "}
-									<Link to="/estimate">Request a free estimate</Link> and we&rsquo;ll reply
-									within one business day.
-								</p>
-							</div>
-						) : (
-							<WhopElementsSafe>
-								<Payments
-									accountId={WHOP_ACCOUNT_ID}
-									mode="setup"
-									currency="usd"
-									returnUrl={`${window.location.origin}/deposit?setup=done`}
-									setupFutureUsage="off_session"
-								>
-									<div className="elements-frame">
-										<PaymentElement fallback={<div className="loading">Loading secure card form…</div>} />
-									</div>
-									<div style={{ marginTop: 14 }}>
-										<EmailElement />
-									</div>
-									<div style={{ marginTop: 18 }}>
-										<SaveCardButton />
-									</div>
-									<div style={{ marginTop: 18 }}>
-										<BrandingElement />
-									</div>
-								</Payments>
-							</WhopElementsSafe>
-						)}
+						<WhopElementsSafe>
+							<Payments
+								accountId={WHOP_ACCOUNT_ID}
+								mode="setup"
+								currency="usd"
+								returnUrl={`${window.location.origin}/deposit?setup=done`}
+								setupFutureUsage="off_session"
+							>
+								<div className="elements-frame">
+									<PaymentElement fallback={<div className="loading">Loading secure card form…</div>} />
+								</div>
+								<div style={{ marginTop: 14 }}>
+									<EmailElement />
+								</div>
+								<div style={{ marginTop: 18 }}>
+									<SaveCardButton />
+								</div>
+								<div style={{ marginTop: 18 }}>
+									<BrandingElement />
+								</div>
+							</Payments>
+						</WhopElementsSafe>
 						<p className="form-note" style={{ marginTop: 16 }}>
 							By saving a card you agree it may be charged for the final balance of your project,
 							only after the work is complete and you&rsquo;ve seen the final invoice.
